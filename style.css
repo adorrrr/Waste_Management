@@ -78,8 +78,8 @@ body {
 }
 
 .cta-button {
-    font-size: .8rem;
-    width: 150px;
+    font-size: .7rem;
+    width: 120px;
     height: 30px;
     background: #007146;
     border-radius:10px ;
@@ -88,6 +88,7 @@ body {
     margin: 1.5rem 0 0 5.5rem;
     transition: 0.3s linear;
 }
+
 .cta-button:hover {
     color: #007146;
     background-color:rgba(172, 158, 133, 0.479);
