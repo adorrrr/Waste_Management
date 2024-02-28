@@ -194,9 +194,10 @@ a:hover {
 
 /* Waste */
 .Waste{
-    height: 500px;
+    height: 550px;
     margin-top: auto;
     margin-bottom: auto;
+    margin: 4rem;
     padding: 4rem;
     display: flex;
     justify-content: space-around;
@@ -302,7 +303,7 @@ button {
 }
 
 .footer-links li a:hover {
-    color: #e50914;
+    color: #1e7a42;
 }
 
 .footer-bottom {
