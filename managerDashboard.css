@@ -4,7 +4,7 @@ p{
   }
 
 .logo {
-    background-image: url("logo.png");
+    background-image: url("Photo/logo.png");
     width: 150px;
     height: 40px;
     background-size: contain;
@@ -52,9 +52,9 @@ a {
 /* section */
 
 .one{
-    height: 500px;
+    height: 600px;
     color:rgb(7, 7, 7);
-    background-color:rgb(220, 240, 220) ;
+    background-color:rgb(200, 231, 200) ;
 }
 
 .container{
@@ -72,24 +72,11 @@ a {
 .img {
     width: 50px;
     margin-right: 200px;
+    padding: 30px;
 }
 .navbar-last {
     margin-left: 325px;
 }
-
-
-/* .link {
-    color:rgb(255, 255, 255);
-    border: .5px solid rgb(90, 182, 102);
-    background-color: rgb(90, 182, 102);
-    border-radius: 25%;
-    margin-right: 250px;
-    padding: 5px;
-} */
-
-/* .link a {
-    text-decoration: none;
-} */
 
 .part1 {
     margin-top: 150px;
@@ -145,6 +132,8 @@ a {
 .left {
     margin-left: 20px;
 }
+
+
 /* Footer */
 footer {
     background-color: #141414;
