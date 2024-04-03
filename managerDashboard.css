@@ -51,6 +51,29 @@ a {
   
 /* section */
 
+.cta-button {
+    font-size: .7rem;
+    width: 120px;
+    height: 30px;
+    background: #007146;
+    border-radius:10px ;
+    color: white;
+    font-weight: 400;
+    margin: 1.5rem 0 0 5.5rem;
+    transition: 0.3s linear;
+}
+
+.cta-button:hover {
+    color: #007146;
+    background-color:rgba(172, 158, 133, 0.479);
+    border: none;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.425);
+    border-right: 2px solid #007146 ;
+    border-bottom: 2px solid #007146 ;
+}
+
+
+  
 .one{
     height: 600px;
     color:rgb(7, 7, 7);
@@ -109,6 +132,7 @@ a {
 .card-img-top1 {
     text-align: center;
     width: 250px;
+    border-radius: 3%;
 }
 
 .card1 {
