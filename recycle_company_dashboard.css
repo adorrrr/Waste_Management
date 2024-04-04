@@ -233,3 +233,29 @@ footer {
 .aa{
     color: #fff;
 }
+
+.profile-section{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: rgb(200, 231, 200);
+}
+
+.profile-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive table */
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+    .profile-section .table {
+        display: block;
+        overflow-x: auto;
+    }
+}
