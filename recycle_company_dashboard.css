@@ -274,3 +274,7 @@ footer {
         max-width: 100%; /* Full width on small devices */
     }
 }
+
+.info-section{
+    background-color: rgb(200, 231, 200);
+}
