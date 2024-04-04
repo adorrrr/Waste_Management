@@ -148,3 +148,14 @@ footer {
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
 }
+
+/* Graph */
+.graph-container{
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
