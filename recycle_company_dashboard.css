@@ -1,0 +1,235 @@
+/* navication bar */
+p{
+    color: rgb(34, 34, 34);
+  }
+
+.logo {
+    background-image: url("Photo/logo.png");
+    width: 150px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+.navbar a:hover {
+    opacity: 0.5;
+    color: #27ac79 ;
+  }
+
+.navbar {
+    background-color: #000;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.navbar li {
+    margin-right: 1rem;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+
+
+  
+/* section */
+
+.cta-button {
+    font-size: .7rem;
+    width: 120px;
+    height: 30px;
+    background: #007146;
+    border-radius:10px ;
+    color: white;
+    font-weight: 400;
+    margin: 1.5rem 0 0 5.5rem;
+    transition: 0.3s linear;
+}
+
+.cta-button:hover {
+    color: #007146;
+    background-color:rgba(172, 158, 133, 0.479);
+    border: none;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.425);
+    border-right: 2px solid #007146 ;
+    border-bottom: 2px solid #007146 ;
+}
+
+
+  
+.one{
+    height: 600px;
+    color:rgb(7, 7, 7);
+    background-color:rgb(200, 231, 200) ;
+}
+
+.project-info-title {
+    font-size: 2rem; /* Larger and bolder title */
+    font-weight: bold;
+}
+
+.project-label {
+    font-size: 1rem; /* Adjust as needed */
+    margin-bottom: 0; /* Reduces space between the label and number */
+}
+
+.project-number {
+    font-size: 3rem; /* Big and bold numbers */
+    font-weight: bold;
+    margin-bottom: 1rem; /* Space before the next section */
+}
+
+/* Example additional customizations */
+.text-success {
+    color: #28a745; /* Bootstrap success color, adjust as needed */
+}
+
+.text-primary {
+    color: #007bff; /* Bootstrap primary color, adjust as needed */
+}
+
+
+.container{
+    height: 550px;
+}
+.b {
+    display: flex;
+}
+.gr {
+    color:rgb(90, 182, 102);
+}
+.part1 {
+    margin-top: 150px;
+}
+.img {
+    width: 50px;
+    margin-right: 200px;
+    padding: 30px;
+}
+.navbar-last {
+    margin-left: 325px;
+}
+
+.part1 {
+    margin-top: 150px;
+}
+
+.card {
+    margin: 10px;
+    text-align: center;
+    padding: 50px;
+    background-color: rgb(237, 252, 252);
+    
+}
+
+.card:hover {
+    background-color: white;
+    box-shadow: 5px 5px gray;
+
+}
+
+.card-img-top {
+    width: 100px;
+    margin-left: 50px;
+}
+
+.part2 {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.card-img-top1 {
+    text-align: center;
+    width: 250px;
+    border-radius: 3%;
+}
+
+.card1 {
+    margin: 50px;
+    background-color: rgb(252, 252, 252);
+    padding: 10px
+}
+
+.prt {
+    display: flex;
+}
+
+.logo1 {
+    width: 20px;
+}
+
+.last {
+    display: flex;
+}
+
+.left {
+    margin-left: 20px;
+}
+
+
+/* Footer */
+footer {
+    background-color: #141414;
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    margin: auto;
+    padding: auto;
+    max-width: 1000px;
+}
+
+.footer-links {
+    flex: 1;
+    margin: 20px 0;
+}
+
+.footer-links h3 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-links li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.footer-links li a:hover {
+    color: #1e7a42;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+.aa{
+    color: #fff;
+}
