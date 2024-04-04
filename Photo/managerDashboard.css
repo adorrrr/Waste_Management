@@ -4,11 +4,7 @@ p{
   }
 
 .logo {
-<<<<<<< HEAD:Photo/managerDashboard.css
     background-image: url("Photo/logo.png");
-=======
-    background-image: url("logo.png");
->>>>>>> 45f8907adf4aec96f7b3784cd0e958e607d6b428:customer.css
     width: 150px;
     height: 40px;
     background-size: contain;
@@ -56,15 +52,9 @@ a {
 /* section */
 
 .one{
-<<<<<<< HEAD:Photo/managerDashboard.css
     height: 600px;
     color:rgb(7, 7, 7);
     background-color:rgb(200, 231, 200) ;
-=======
-    height: 500px;
-    color:rgb(7, 7, 7);
-    background-color:rgb(220, 240, 220) ;
->>>>>>> 45f8907adf4aec96f7b3784cd0e958e607d6b428:customer.css
 }
 
 .container{
@@ -82,32 +72,12 @@ a {
 .img {
     width: 50px;
     margin-right: 200px;
-<<<<<<< HEAD:Photo/managerDashboard.css
     padding: 30px;
-=======
->>>>>>> 45f8907adf4aec96f7b3784cd0e958e607d6b428:customer.css
 }
 .navbar-last {
     margin-left: 325px;
 }
 
-<<<<<<< HEAD:Photo/managerDashboard.css
-=======
-
-/* .link {
-    color:rgb(255, 255, 255);
-    border: .5px solid rgb(90, 182, 102);
-    background-color: rgb(90, 182, 102);
-    border-radius: 25%;
-    margin-right: 250px;
-    padding: 5px;
-} */
-
-/* .link a {
-    text-decoration: none;
-} */
-
->>>>>>> 45f8907adf4aec96f7b3784cd0e958e607d6b428:customer.css
 .part1 {
     margin-top: 150px;
 }
@@ -162,11 +132,8 @@ a {
 .left {
     margin-left: 20px;
 }
-<<<<<<< HEAD:Photo/managerDashboard.css
 
 
-=======
->>>>>>> 45f8907adf4aec96f7b3784cd0e958e607d6b428:customer.css
 /* Footer */
 footer {
     background-color: #141414;
