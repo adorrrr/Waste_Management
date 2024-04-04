@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Entry Form - Trash Collector Website</title>
+    <link rel="stylesheet" href="track.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo"></div>
+            <ul>
+                <li><a href="tc_dashboard.html">Home</a></li>
+                <li><a href="assigned_work.html">Assigned Work</a></li>
+                <li><a href="track.html">Track</a></li>
+                <li><a href="data_entery.html">Data Entery</a></li>
+                <li><a href="wearhouse.html">Wearhouse</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="collector-info">
+            <h2>Name: <span id="collectorName"></span></h2>
+            <h3>ID: <span id="collectorID"></span></h3>
+            <h3>Assigned Area: <span id="assignedArea"></span></h3>
+        </div>
+
+        <h2>Date and Time of Collection</h2>
+        <br>
+        <label for="collectionDate">Date:</label>
+        <br>
+        <input type="date" id="collectionDate" name="collectionDate">
+        <br>
+        <label for="collectionTime">Time:</label>
+        <br>
+        <input type="time" id="collectionTime" name="collectionTime">
+        <br>
+
+        <h2>Location Information</h2>
+        <button onclick="shareLocation()">Share Live Location</button>
+
+        <h2>Waste Information</h2>
+        <br>
+        <label for="amountOfWaste">Amount of Waste:</label>
+        <br>
+        <input type="text" id="amountOfWaste" name="amountOfWaste">
+        <br>
+        <label for="typeOfWaste">Type of Waste:</label>
+        <br>
+        <select id="typeOfWaste" name="typeOfWaste">
+            <br>
+            <option value="general">General Waste</option>
+            <option value="hazardous">Hazardous Waste</option>
+            <option value="recyclables">Recyclables</option>
+        </select>
+         <br>
+         <br>
+         <br>
+        <h2>Collection Destination</h2>
+        <br>
+        <label for="collectionDestination">Destination:</label>
+        <input type="text" id="collectionDestination" name="collectionDestination">
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Account</h3>
+                <ul>
+                    <li><a href="#">LogIn</a></li>
+                    <li><a href="#">Create Account</a></li>
+                    <li><a href="#">Manage Profile</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 West Management. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to share live location
+        function shareLocation() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    // Extract latitude and longitude
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+
+                    // Here you can do something with the latitude and longitude
+                    console.log("Latitude: " + latitude + ", Longitude: " + longitude);
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+    </script>
+
+</body>
+</html>
+
