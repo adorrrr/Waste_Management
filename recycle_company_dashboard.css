@@ -259,3 +259,18 @@ footer {
         overflow-x: auto;
     }
 }
+
+
+.left-container, .right-container {
+    flex: 1; /* Each container takes equal width */
+    max-width: 50%; /* Maximum width for large devices */
+}
+
+.form-section{
+    background-color: rgb(200, 231, 200);
+}
+@media (max-width: 768px) {
+    .left-container, .right-container {
+        max-width: 100%; /* Full width on small devices */
+    }
+}
