@@ -82,6 +82,9 @@ $conn->close();
                         <li class="nav-item">
                             <a class="nav-link" href="managerSchedule.html">Contact</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="btn btn-success" href="login.php">Log Out</a>
+                        </li>
                     </ul>
                 </div>
             </div>
