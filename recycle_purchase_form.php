@@ -29,19 +29,19 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
-                                href="recycle_company_dashboard.html">Home</a>
+                                href="recycle_company_dashboard.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="recycle_company_profile.html">Profile</a>
+                            <a class="nav-link" href="recycle_company_profile.php">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="recycle_purchase_form.html">Purchase Form</a>
+                            <a class="nav-link" href="recycle_purchase_form.php">Purchase Form</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="warehouse.html">Warehouse</a>
+                            <a class="nav-link" href="warehouse_info_recycle.php">Warehouse</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="managerSchedule.html">Contact</a>
+                            <a class="nav-link" href="managerSchedule.php">Contact</a>
                         </li>
                     </ul>
                 </div>

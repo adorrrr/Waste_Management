@@ -47,13 +47,13 @@
                             <a class="nav-link" href="recycle_company_profile.php">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="recycle_purchase_form.html">Purchase Form</a>
+                            <a class="nav-link" href="recycle_purchase_form.php">Purchase Form</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="warehouse.html">Warehouse</a>
+                            <a class="nav-link" href="warehouse_info_recycle.php">Warehouse</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="managerSchedule.html">Contact</a>
+                            <a class="nav-link" href="">Contact</a>
                         </li>
                     </ul>
                 </div>
