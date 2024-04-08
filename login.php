@@ -2,8 +2,8 @@
 // Database connection settings
 $host = '127.0.0.1';
 $dbname = 'waste_management';
-$username = 'your_database_username';
-$password = 'your_database_password';
+$username = '';
+$password = '';
 
 
 // Attempt database connection
@@ -27,14 +27,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt_trash_collector = $pdo->prepare("SELECT * FROM trash_collector WHERE (email = :username OR tcID = :username) AND password = :password");
 
+    $stmt_recycle_company = $pdo->prepare("SELECT * FROM recycle_company WHERE (email = :username OR rcID = :username) AND password = :password");
 
-
-    // Execute SQL statement for customers, managers, trash collectors.
     $stmt_customer->execute(['username' => $usernameOrEmail, 'password' => $password]);
 
     $stmt_manager->execute(['username' => $usernameOrEmail, 'password' => $password]);
 
     $stmt_trash_collector->execute(['username' => $usernameOrEmail, 'password' => $password]);
+
+    $stmt_recycle_company->execute(['username' => $usernameOrEmail, 'password' => $password]);
 
 
     
@@ -49,13 +50,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // User exists as a manager, log them in
         session_start();
         $_SESSION['username'] = $usernameOrEmail;
-        header("Location: manager_dashboard.php");
+        header("Location: managerDashboard.php");
         exit();
     } elseif ($stmt_trash_collector->rowCount() > 0) {
         // User exists as a trash collector, log them in
         session_start();
         $_SESSION['username'] = $usernameOrEmail;
         header("Location: trash_collector_dashboard.php");
+        exit();
+    } elseif ($stmt_recycle_company->rowCount() > 0) {
+        // User exists as a recycle company, log them in
+        session_start();
+        $_SESSION['username'] = $usernameOrEmail;
+        header("Location: recycle_company_dashboard.php");
         exit();
     } else {
         // Invalid credentials, display error message

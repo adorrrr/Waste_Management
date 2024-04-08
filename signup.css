@@ -32,7 +32,7 @@
 .wrapper{
     max-width:400px;
     width: 100%;
-    height: 600px;
+    height: 650px;
     margin: auto;
     position: absolute;
     top: 50%;
@@ -112,12 +112,12 @@ form .footer{
     margin-top: 50px;
 }
 
-form .footer h3{
+form .footer h4{
     color: rgb(48, 50, 52);
     margin-bottom: 30px;
 }
 
-form .footer h3 a{
+form .footer h4 a{
     color: white;
     font-size: 0.9rem;
     text-decoration: none;
@@ -244,3 +244,33 @@ body {
     text-decoration: none;
     color: inherit;
   }
+
+form select {
+    width: 100%;
+    height: 50px;
+    padding-left: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background: rgb(37, 36, 36);
+}
+
+form select option {
+    background-color: rgb(37, 36, 36);
+    color: white;
+}
+
+/* Style the selected option */
+form select option:checked {
+    background-color: rgb(52, 161, 38);
+}
+
+/* Hide the default arrow */
+form select::-ms-expand {
+    display: none;
+}
+
+form select:focus {
+    outline: none;
+}
