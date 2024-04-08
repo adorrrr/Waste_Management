@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Execute the prepared statement
     $stmt->execute([$username, $email, $hashed_password, $phone]);
     // Redirect the user to a success page or display a success message
-    header("Location: signup_success.php");
+    header("Location: signup.php");
     exit();
 }
 ?>
