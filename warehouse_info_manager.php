@@ -1,3 +1,24 @@
+<?php
+// Database connection variables
+$servername = "localhost";
+$username = "root"; // Your database username
+$password = ""; // Your database password
+$dbname = "waste_management";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// SQL query to fetch data from warehouse_recycle_company
+$sql = "SELECT warehouseID, amount, item_type FROM warehouse_recycle_company";
+$result = $conn->query($sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +27,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Waste Management</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="recycle_common.css">
     <link rel="icon" href="photo/logo.png">
 </head>
@@ -21,12 +41,13 @@
                 <li><a href="managerDashboard.html">Home</a></li>
                 <li><a href="managerProfile.html">Profile</a></li>
                 <li><a href="ReportCreated.html">Report Created</a></li>
-                <li><a href="managerSchedule.html">Schedule</a></li>                
+                <li><a href="managerSchedule.html">Schedule</a></li>
                 <li><a href="warehouse.html">Warehouse</a></li>
+                <li><a class="btn btn-success" href="login.php">Log Out</a></li>
             </ul>
         </nav>
     </header>
-    
+
     <section class="info-section py-5">
         <div class="container">
             <div class="row">
@@ -34,7 +55,7 @@
                 <div class="col-md-6 pe-5">
                     <img src="Photo/warehouse-01.png" alt="Warehouse Image" class="img-fluid">
                 </div>
-                
+
                 <!-- Right Container for Table -->
                 <div class="col-md-6 ps-5">
                     <h2 class="mb-3">Warehouse Information</h2>
@@ -44,50 +65,27 @@
                                 <tr>
                                     <th scope="col">SL</th>
                                     <th scope="col">Warehouse ID</th>
-                                    <th scope="col">Item Type</th>
                                     <th scope="col">Amount (KG)</th>
+                                    <th scope="col">Item Type</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Example row, repeat or loop through your data to generate similar rows -->
-                                <tr>
-                                    <td>1</td>
-                                    <td>123</td>
-                                    <td>Plastic</td>
-                                    <td>100</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>123</td>
-                                    <td>Plastic</td>
-                                    <td>100</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>123</td>
-                                    <td>Plastic</td>
-                                    <td>100</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>123</td>
-                                    <td>Plastic</td>
-                                    <td>100</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>123</td>
-                                    <td>Plastic</td>
-                                    <td>100</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>123</td>
-                                    <td>Plastic</td>
-                                    <td>100</td>
-                                </tr>
-
-                                <!-- Add more rows here -->
+                                <?php
+                                if ($result->num_rows > 0) {
+                                    $sl = 1; // Initialize serial number
+                                    // Output data of each row
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<tr>";
+                                        echo "<td>" . $sl++ . "</td>";
+                                        echo "<td>" . $row["warehouseID"] . "</td>";
+                                        echo "<td>" . $row["amount"] . "</td>";
+                                        echo "<td>" . $row["item_type"] . "</td>";
+                                        echo "</tr>";
+                                    }
+                                } else {
+                                    echo "<tr><td colspan='4'>No data found</td></tr>";
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -95,7 +93,7 @@
             </div>
         </div>
     </section>
-    
+
 
 
 
@@ -134,9 +132,7 @@
 
 
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 
 </html>
