@@ -1,20 +1,17 @@
 <?php
 // Database connection settings
-$host = '127.0.0.1';
-$dbname = 'waste_management';
-$username = '';
+$servername = 'localhost';
+$username = 'root';
 $password = '';
+$database = 'waste_management';
 
+// Create connection
+$connection = new mysqli($servername, $username, $password, $database);
 
-// Attempt database connection
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+// Check connection
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
 }
-
-
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -22,37 +19,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $user_type = $_POST['user_type'];
+    $userType = $_POST['userType']; // Customer, Trash Collector, or Recycle Company
     $password = $_POST['password'];
-    // Hash the password before storing it in the database
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-
-
-    // Prepare SQL statement to insert user data into appropriate table based on user type
-    switch ($user_type) {
-        case 'Customer':
-            $stmt = $pdo->prepare("INSERT INTO customer (name, email, password, location) VALUES (?, ?, ?, '')");
+    // Prepare SQL statement to insert user data into the appropriate table based on user type
+    switch ($userType) {
+        case "Customer":
+            $stmt = $connection->prepare("INSERT INTO customer (name, email, password, contact_number) VALUES (:username, :email, :password, :phone)");
             break;
-        case 'Trash Collector':
-            $stmt = $pdo->prepare("INSERT INTO trash_collector (fname, email, contact_number, managerID, warehouseID) VALUES (?, ?, ?, '', '')");
+        case "Trash Collector":
+            $stmt = $connection->prepare("INSERT INTO trash_collector (name, email, password, contact_number) VALUES (:username, :email, :password, :phone)");
             break;
-        case 'Recycle Company':
-            $stmt = $pdo->prepare("INSERT INTO recycle_company (email, contact_number) VALUES (?, '')");
+        case "Recycle Company":
+            $stmt = $connection->prepare("INSERT INTO recycle_company (company_name, email, contact_number, password) VALUES (:username, :email, :password, :phone)");
             break;
         default:
+            // Handle invalid user type
             die("Invalid user type");
     }
 
+    // Bind parameters and execute the prepared statement
+    $stmt->bind_param("ssss", $username, $email, $password, $phone);
+    $stmt->execute();
 
+    // Close statement
+    $stmt->close();
 
-    // Execute the prepared statement
-    $stmt->execute([$username, $email, $hashed_password, $phone]);
-    // Redirect the user to a success page or display a success message
-    header("Location: signup.php");
+    // Redirect to login page after successful sign-up
+    header("Location: login.html");
     exit();
 }
 ?>
+
 
 
 
@@ -89,37 +87,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <section>
-    <div class="container">
-        <div class="wrapper">
-            <div class="wrap">
-                <form>
-                    <h1>SignUp</h1>
-                    <input type="text" placeholder="Username" required>
-                    <input type="text" placeholder="Email" required>
-                    <input type="text" placeholder="Phone Number" required>
-                    <!-- <input type="text" id="demo" name="comboboxdemo"/> -->
-                    <select name=" optionlist " onChange="combo(this, 'demo')">
-                        <option>Select</option>
-                        <option>Customer</option>
-                        <option>Trash Collector</option>
-                        <option>Recycle Company</option>
-                    </select>
-                    <input type="password" placeholder="Password" required>
-                    <button>Sign up</button>
-                    <div class="remember">
-                        <input type="checkbox" class="chkbox">
-                        <label >Remember me</label>
-                    </div>  
-                    <a href="#" class="need">Need help?</a>
-                    <div class="footer">
-                        <h4>If you have created account .<a href="login.html">Login now</a></h4>
-                        <!-- <p>This page is protected by Google reCAPTCHA to ensure you're not a bot <a href="">Learn more.</a></p> -->
-                    </div>
-
-                </form>
+        <div class="container">
+            <div class="wrapper">
+                <div class="wrap">
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        <h1>SignUp</h1>
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="text" name="email" placeholder="Email" required>
+                        <input type="text" name="phone" placeholder="Phone Number" required>
+                        <select name="userType">
+                            <option value="Customer">Customer</option>
+                            <option value="Trash Collector">Trash Collector</option>
+                            <option value="Recycle Company">Recycle Company</option>
+                        </select>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <button type="submit">Sign up</button>
+                        <div class="remember">
+                            <input type="checkbox" class="chkbox">
+                            <label >Remember me</label>
+                        </div>  
+                        <a href="#" class="need">Need help?</a>
+                        <div class="footer">
+                            <h4>If you have created account .<a href="login.html">Login now</a></h4>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     </section>
 
 

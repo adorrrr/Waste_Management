@@ -1,64 +1,60 @@
 <?php
 // Database connection settings
-$host = '127.0.0.1';
-$dbname = 'waste_management';
-$username = '';
+$servername = 'localhost';
+$username = 'root';
 $password = '';
+$database = 'waste_management';
 
+// Create connection
+$connection = new mysqli($servername, $username, $password, $database);
 
-// Attempt database connection
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+// Check connection
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
 }
-
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usernameOrEmail = $_POST['username_or_email'];
     $password = $_POST['password'];
 
     // Prepare SQL statement to check credentials for customers, managers, trash collectors.
-    $stmt_customer = $pdo->prepare("SELECT * FROM customer WHERE (email = :username OR customerID = :username) AND password = :password");
+    $stmt_customer = $connection->prepare("SELECT * FROM customer WHERE (email = ? OR customerID = ?) AND password = ?");
+    $stmt_customer->bind_param("sss", $usernameOrEmail, $usernameOrEmail, $password);
 
-    $stmt_manager = $pdo->prepare("SELECT * FROM manager WHERE (email = :username OR managerID = :username) AND password = :password");
+    $stmt_manager = $connection->prepare("SELECT * FROM manager WHERE (email = ? OR managerID = ?) AND password = ?");
+    $stmt_manager->bind_param("sss", $usernameOrEmail, $usernameOrEmail, $password);
 
-    $stmt_trash_collector = $pdo->prepare("SELECT * FROM trash_collector WHERE (email = :username OR tcID = :username) AND password = :password");
+    $stmt_trash_collector = $connection->prepare("SELECT * FROM trash_collector WHERE (email = ? OR tcID = ?) AND password = ?");
+    $stmt_trash_collector->bind_param("sss", $usernameOrEmail, $usernameOrEmail, $password);
 
-    $stmt_recycle_company = $pdo->prepare("SELECT * FROM recycle_company WHERE (email = :username OR rcID = :username) AND password = :password");
+    $stmt_recycle_company = $connection->prepare("SELECT * FROM recycle_company WHERE (email = ? OR rcID = ?) AND password = ?");
+    $stmt_recycle_company->bind_param("sss", $usernameOrEmail, $usernameOrEmail, $password);
 
-    $stmt_customer->execute(['username' => $usernameOrEmail, 'password' => $password]);
+    $stmt_customer->execute();
+    $stmt_manager->execute();
+    $stmt_trash_collector->execute();
+    $stmt_recycle_company->execute();
 
-    $stmt_manager->execute(['username' => $usernameOrEmail, 'password' => $password]);
-
-    $stmt_trash_collector->execute(['username' => $usernameOrEmail, 'password' => $password]);
-
-    $stmt_recycle_company->execute(['username' => $usernameOrEmail, 'password' => $password]);
-
-
-    
-    // Check if user exists as a customer, manager, or trash collector
-    if ($stmt_customer->rowCount() > 0) {
+    // Check if user exists as a customer, manager, trash collector, or recycle company
+    if ($stmt_customer->fetch()) {
         // User exists as a customer, log them in
         session_start();
         $_SESSION['username'] = $usernameOrEmail;
         header("Location: customer_dashboard.php");
         exit();
-    } elseif ($stmt_manager->rowCount() > 0) {
+    } elseif ($stmt_manager->fetch()) {
         // User exists as a manager, log them in
         session_start();
         $_SESSION['username'] = $usernameOrEmail;
         header("Location: managerDashboard.php");
         exit();
-    } elseif ($stmt_trash_collector->rowCount() > 0) {
+    } elseif ($stmt_trash_collector->fetch()) {
         // User exists as a trash collector, log them in
         session_start();
         $_SESSION['username'] = $usernameOrEmail;
         header("Location: trash_collector_dashboard.php");
         exit();
-    } elseif ($stmt_recycle_company->rowCount() > 0) {
+    } elseif ($stmt_recycle_company->fetch()) {
         // User exists as a recycle company, log them in
         session_start();
         $_SESSION['username'] = $usernameOrEmail;
@@ -70,6 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
 
 
@@ -94,8 +91,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- Navigation links -->
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="signup.html">SingUp</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="signup.php">SingUp</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -108,34 +105,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     <!-- Main content section -->
     <section>
-    <div class="container">
-        <div class="wrapper">
-            <div class="wrap">
-                <form>
-                     <!-- Form title -->
-                     <h1>Login</h1>
-                        <!-- Input fields for email/username and password -->
-                        <input type="text" placeholder="Email or Username" required>
-                        <input type="password" placeholder="Password" required>
-                        <!-- Button to submit the form -->
-                        <button>Login</button>
-                    <div class="remember">
-                        <input type="checkbox" class="chkbox">
-                        <label >Remember me</label>
-                    </div>
-                    <!-- Link for "Need help?" -->
-                    <a href="#" class="need">Need help?</a>
-                        <!-- Footer section of the form -->
+        <div class="container">
+            <div class="wrapper">
+                <div class="wrap">
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        <h1>Login</h1>
+                        <?php if (isset($error)) { ?>
+                            <div class="error"><?php echo $error; ?></div>
+                        <?php } ?>
+                        <input type="text" name="username_or_email" placeholder="Email or Username" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <button type="submit">Login</button>
+                        <div class="remember">
+                            <input type="checkbox" class="chkbox">
+                            <label >Remember me</label>
+                        </div>
+                        <a href="#" class="need">Need help?</a>
                         <div class="footer">
-                            <!-- Links and message for new users -->
-                        <h3>New to West Management?<a href="singup.html">SignUp now</a></h3>
-                        <p>This page is protected by Google reCAPTCHA to ensure you're not a bot <a href="">Learn more.</a></p>
-                    </div>
-
-                </form>
+                            <h3>New to West Management?<a href="signup.html">SignUp now</a></h3>
+                            <p>This page is protected by Google reCAPTCHA to ensure you're not a bot <a href="">Learn more.</a></p>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     </section>
 
 
