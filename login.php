@@ -3,7 +3,7 @@
 $servername = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'waste_management';
+$database = 'project_database';
 
 // Create connection
 $connection = new mysqli($servername, $username, $password, $database);
