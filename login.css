@@ -1,10 +1,12 @@
-*{
+/* Reset CSS */
+* {
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
 }
 
+/* Logo */
 .logo {
     background-image: url('Photo/logo.png');
     width: 150px;
@@ -12,15 +14,15 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-  }
+}
 
-.container{
+/* Main Container */
+.container {
     width: 100%;
     height: 100vh;
     background-image: url('Photo/coverrrr.jpg');
     background-size: cover;
     background-position: center;
-    height: 1000px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,37 +31,40 @@
     padding: 0 2rem;
 }
 
-.wrapper{
-    max-width:400px;
+/* Form Wrapper */
+.wrapper {
+    max-width: 400px;
     width: 100%;
     margin: auto;
     height: 600px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background-color: black;
     opacity: 0.8;
     border-radius: 15px;
 }
 
-.wrap{
+.wrap {
     width: 80%;
-    height:80%;
+    height: 80%;
     margin: 10%;
 }
 
-form h1{
+/* Form Styles */
+form h1 {
     color: white;
     margin: 20px 0;
 }
 
-form{
+form {
     width: 100%;
     height: 100%;
 }
 
-form input{
+form input,
+form select {
     width: 100%;
     height: 50px;
     padding-left: 20px;
@@ -70,11 +75,11 @@ form input{
     background: rgb(37, 36, 36);
 }
 
-form input::placeholder{
+form input::placeholder {
     color: white;
 }
 
-form button{
+form button {
     width: 100%;
     height: 50px;
     margin-top: 50px;
@@ -85,54 +90,38 @@ form button{
     font-weight: 700;
 }
 
-form .chkbox{
+form .chkbox {
     margin-top: -1px;
     margin-left: 3px;
-    margin-right:4px ;
+    margin-right: 4px;
     width: 20px;
     height: 20px;
 }
 
-form .remember{
-    display: flex;
+form .remember,
+form .need,
+form .footer {
+    color: white;
     margin-top: 15px;
-    color: white;
 }
 
-form .need{
-    display: flex;
-    float: right;
-    color: white;
-    text-decoration: none;
-    margin: -20px 0 0 0 ;
-}
-
-form .footer{
-    color: white;
-    margin-top: 60px;
-}
-
-form .footer h3{
+form .footer h3 {
     color: rgb(48, 50, 52);
     margin-bottom: 30px;
 }
 
-form .footer h3 a{
+form .footer h3 a {
     color: white;
     font-size: 0.9rem;
     text-decoration: none;
 }
 
-form .footer p{
+form .footer p,
+form .footer p a {
     font-size: 0.9rem;
-}
-form .footer p a{
-    font-size: 1rem;
     color: rgb(6, 83, 192);
-    text-decoration:none ;
+    text-decoration: none;
 }
-
-
 
 /* Footer */
 footer {
@@ -142,14 +131,13 @@ footer {
 
 .footer-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
     margin: auto;
     padding: auto;
-    max-width: 1000px;
 }
 
 .footer-links {
-    flex: 1;
     margin: 20px 0;
 }
 
@@ -181,39 +169,7 @@ footer {
     margin-top: 20px;
 }
 
-
-
-
-/* navication bar */
-p{
-    color: white;
-  }
-
-
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #141414;
-    color: #a19b9b;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-}
-
-.logo {
-    background-image: url("Photo/logo.png");
-    width: 150px;
-    height: 40px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
-.navbar a:hover {
-    opacity: 0.5;
-    color: #27ac79 ;
-  }
-
+/* Navigation bar */
 .navbar {
     background-color: #000;
     padding: 1rem;
@@ -238,9 +194,17 @@ body {
     border-radius: 0.25rem;
 }
 
+.navbar a:hover {
+    opacity: 0.5;
+    color: #27ac79;
+}
 
-  
-  a {
+/* Global Link Styles */
+a {
     text-decoration: none;
     color: inherit;
-  }
+}
+
+p {
+    color: white;
+}

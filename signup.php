@@ -3,7 +3,11 @@
 $servername = 'localhost';
 $username = 'root';
 $password = '';
+<<<<<<< HEAD
+$database = 'project_database';
+=======
 $database = 'waste_management';
+>>>>>>> 25a5cba561545741fb3983fc1b54b953dfd5f453
 
 // Create connection
 $connection = new mysqli($servername, $username, $password, $database);
@@ -25,6 +29,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepare SQL statement to insert user data into the appropriate table based on user type
     switch ($userType) {
         case "Customer":
+<<<<<<< HEAD
+            $stmt = $connection->prepare("INSERT INTO customer (name, email, password, contact_number) VALUES (?, ?, ?, ?)");
+            break;
+        case "Trash Collector":
+            $stmt = $connection->prepare("INSERT INTO trash_collector (name, email, password, contact_number) VALUES (?, ?, ?, ?)");
+            break;
+        case "Recycle Company":
+            $stmt = $connection->prepare("INSERT INTO recycle_company (company_name, email, contact_number, password) VALUES (?, ?, ?, ?)");
+=======
             $stmt = $connection->prepare("INSERT INTO customer (name, email, password, contact_number) VALUES (:username, :email, :password, :phone)");
             break;
         case "Trash Collector":
@@ -32,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
         case "Recycle Company":
             $stmt = $connection->prepare("INSERT INTO recycle_company (company_name, email, contact_number, password) VALUES (:username, :email, :password, :phone)");
+>>>>>>> 25a5cba561545741fb3983fc1b54b953dfd5f453
             break;
         default:
             // Handle invalid user type
@@ -46,7 +60,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 
     // Redirect to login page after successful sign-up
+<<<<<<< HEAD
+    header("Location: login.php");
+=======
     header("Location: login.html");
+>>>>>>> 25a5cba561545741fb3983fc1b54b953dfd5f453
     exit();
 }
 ?>
@@ -74,8 +92,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- Navigation links -->
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="signup.html">SingUp</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="signup.php">SingUp</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>

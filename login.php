@@ -92,7 +92,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="login.php">Login</a></li>
+<<<<<<< HEAD
+                <li><a href="signup.php">SignUp</a></li>
+=======
                 <li><a href="signup.php">SingUp</a></li>
+>>>>>>> 25a5cba561545741fb3983fc1b54b953dfd5f453
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -108,11 +112,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="container">
             <div class="wrapper">
                 <div class="wrap">
+<<<<<<< HEAD
+                    <form method="post" action="">
+                        <h1>Login</h1>
+                        <select name="userType">
+                            <option value="Customer">Customer</option>
+                            <option value="Trash Collector">Trash Collector</option>
+                            <option value="Recycle Company">Recycle Company</option>
+                        </select>
+=======
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <h1>Login</h1>
                         <?php if (isset($error)) { ?>
                             <div class="error"><?php echo $error; ?></div>
                         <?php } ?>
+>>>>>>> 25a5cba561545741fb3983fc1b54b953dfd5f453
                         <input type="text" name="username_or_email" placeholder="Email or Username" required>
                         <input type="password" name="password" placeholder="Password" required>
                         <button type="submit">Login</button>
