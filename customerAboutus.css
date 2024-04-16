@@ -1,0 +1,125 @@
+/* CSS for the About Us page with the same theme as before */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #EAEFC8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #4A4A48;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 100px;
+    height: 40px;
+    background-color: #013220;
+}
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.navbar ul li {
+    margin-right: 20px;
+}
+
+.navbar ul li a {
+    color: #EAEFC8;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #115D33;
+}
+
+/* Main */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #013220;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #4A4A48;
+    color: #EAEFC8;
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    flex: 1;
+}
+
+.footer-links h3 {
+    color: #EAEFC8;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style-type: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 5px;
+}
+
+.footer-links ul li a {
+    color: #EAEFC8;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #115D33;
+}
+
+.footer-bottom {
+    background-color: #4A4A48;
+    text-align: center;
+    padding: 10px 0;
+}
