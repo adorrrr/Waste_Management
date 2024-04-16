@@ -1,34 +1,31 @@
 <?php
-// Database connection details
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "waste_management";
+$database = "waste_managment";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if form is submitted
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data
+
     $name = $_POST["name"];
     $email = $_POST["email"];
-    $location = $_POST["location"]; // Changed from "phone" to "location"
+    $location = $_POST["location"]; 
 
-    // Prepare update statement
-    $sql = "UPDATE customer SET name=?, email=?, location=? WHERE customerID=?"; // Changed from "phone" to "location"
+    
+    $sql = "UPDATE customer SET name=?, email=?, location=? WHERE customerID=?"; 
 
     if ($stmt = $conn->prepare($sql)) {
         // Bind parameters
-        $stmt->bind_param("ssss", $name, $email, $location, $customerID); // Changed from "phone" to "location"
+        $stmt->bind_param("ssss", $name, $email, $location, $customerID); 
 
-        // Set parameters
-        $customerID = "C001"; // You need to change this to the customer ID of the logged-in user
+        // Set customerID parameter
+        $customerID = "C001"; 
 
         // Execute statement
         if ($stmt->execute()) {
@@ -44,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Close connection
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -80,8 +76,8 @@ $conn->close();
                 <input type="email" id="email" name="email" value="john@example.com" required>
             </div>
             <div class="form-group">
-                <label for="location">Location</label> <!-- Changed from "phone" to "location" -->
-                <input type="text" id="location" name="location" value="New York" required> <!-- Changed from "phone" to "location" -->
+                <label for="location">Location</label> 
+                <input type="text" id="location" name="location" value="New York" required> 
             </div>
             <button type="submit">Update Profile</button>
         </form>
