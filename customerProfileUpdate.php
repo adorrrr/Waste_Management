@@ -1,3 +1,52 @@
+<?php
+// Database connection details
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "waste_management";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $location = $_POST["location"]; // Changed from "phone" to "location"
+
+    // Prepare update statement
+    $sql = "UPDATE customer SET name=?, email=?, location=? WHERE customerID=?"; // Changed from "phone" to "location"
+
+    if ($stmt = $conn->prepare($sql)) {
+        // Bind parameters
+        $stmt->bind_param("ssss", $name, $email, $location, $customerID); // Changed from "phone" to "location"
+
+        // Set parameters
+        $customerID = "C001"; // You need to change this to the customer ID of the logged-in user
+
+        // Execute statement
+        if ($stmt->execute()) {
+            // Redirect to profile page or show success message
+            header("location: profile.php");
+            exit();
+        } else {
+            echo "Error updating record: " . $conn->error;
+        }
+
+        // Close statement
+        $stmt->close();
+    }
+}
+
+// Close connection
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +70,7 @@
     </header>
     <div class="container">
         <h1>Edit Profile</h1>
-        <form action="update_profile.php" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" value="John Doe" required>
@@ -31,8 +80,8 @@
                 <input type="email" id="email" name="email" value="john@example.com" required>
             </div>
             <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" value="123-456-7890" required>
+                <label for="location">Location</label> <!-- Changed from "phone" to "location" -->
+                <input type="text" id="location" name="location" value="New York" required> <!-- Changed from "phone" to "location" -->
             </div>
             <button type="submit">Update Profile</button>
         </form>
