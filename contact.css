@@ -13,15 +13,7 @@ body {
     line-height: 1.6;
 }
 
-.logo {
-    background-image: url("Photo/logo.png");
-    width: 150px;
-    height: 40px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
+
 .navbar a:hover {
     opacity: 0.5;
     color: #27ac79;

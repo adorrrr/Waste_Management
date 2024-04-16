@@ -80,6 +80,32 @@ a {
     background-color:rgb(200, 231, 200) ;
 }
 
+.project-info-title {
+    font-size: 2rem; /* Larger and bolder title */
+    font-weight: bold;
+}
+
+.project-label {
+    font-size: 1rem; /* Adjust as needed */
+    margin-bottom: 0; /* Reduces space between the label and number */
+}
+
+.project-number {
+    font-size: 3rem; /* Big and bold numbers */
+    font-weight: bold;
+    margin-bottom: 1rem; /* Space before the next section */
+}
+
+/* Example additional customizations */
+.text-success {
+    color: #28a745; /* Bootstrap success color, adjust as needed */
+}
+
+.text-primary {
+    color: #007bff; /* Bootstrap primary color, adjust as needed */
+}
+
+
 .container{
     height: 550px;
 }
@@ -206,4 +232,49 @@ footer {
 }
 .aa{
     color: #fff;
+}
+
+.profile-section{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: rgb(200, 231, 200);
+}
+
+.profile-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive table */
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+    .profile-section .table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+
+.left-container, .right-container {
+    flex: 1; /* Each container takes equal width */
+    max-width: 50%; /* Maximum width for large devices */
+}
+
+.form-section{
+    background-color: rgb(200, 231, 200);
+}
+@media (max-width: 768px) {
+    .left-container, .right-container {
+        max-width: 100%; /* Full width on small devices */
+    }
+}
+
+.info-section{
+    background-color: rgb(200, 231, 200);
 }
