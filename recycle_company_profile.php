@@ -2,16 +2,14 @@
 // Start PHP session to access login session variables
 session_start();
 
-// Assuming company ID is stored in session during login
-// For example, $_SESSION['company_id'] = 'companyID_here';
 //$companyID = isset($_SESSION['company_id']) ? $_SESSION['company_id'] : '';
 $companyID = "R001";
 
 // Database configuration
 $servername = "localhost";
-$username = "root"; // Your MySQL username
-$password = ""; // Your MySQL password
-$dbname = "waste_management";
+$username = "root";
+$password = "";
+$dbname = "project_database";
 
 // Create database connection
 $conn = new mysqli($servername, $username, $password, $dbname);

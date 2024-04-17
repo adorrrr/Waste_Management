@@ -1,9 +1,9 @@
 <?php
 // Database connection variables
 $servername = "localhost";
-$username = "root"; // Your database username
-$password = ""; // Your database password
-$dbname = "waste_management";
+$username = "root";
+$password = "";
+$dbname = "project_database";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
